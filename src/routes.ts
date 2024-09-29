@@ -89,16 +89,16 @@ const path_user = "/users";
 const authController_User = new AuthController();
 const userRoutes = Router();
 
-userRoutes.post(path_user, (req, res, next) => { authController.authMiddleware }, (req, res, next) => { userController.create(req, res).catch(next) });
+userRoutes.post(path_user, (req, res, next) => { authController_User.authMiddleware }, (req, res, next) => { userController.create(req, res).catch(next) });
 
-userRoutes.get(path_user, (req, res, next) => { authController.authMiddleware }, (req, res, next) => { userController.getAll(req, res).catch(next) });
+userRoutes.get(path_user, (req, res, next) => { authController_User.authMiddleware }, (req, res, next) => { userController.getAll(req, res).catch(next) });
 
-userRoutes.get(`${path_user}/:id`, (req, res, next) => { authController.authMiddleware }, (req, res, next) => { userController.getById(req, res).catch(next) });
+userRoutes.get(`${path_user}/:id`, (req, res, next) => { authController_User.authMiddleware }, (req, res, next) => { userController.getById(req, res).catch(next) });
 
-userRoutes.delete(`${path_user}/:id`, (req, res, next) => { authController.authMiddleware }, (req, res, next) => { userController.verifyIfExists, userController.delete(req, res).catch(next) });
+userRoutes.delete(`${path_user}/:id`, (req, res, next) => { authController_User.authMiddleware }, (req, res, next) => { userController.verifyIfExists, userController.delete(req, res).catch(next) });
 
-userRoutes.put(`${path_user}/:id`, (req, res, next) => { authController.authMiddleware }, (req, res, next) => { userController.verifyIfExists, userController.update(req, res).catch(next) });
+userRoutes.put(`${path_user}/:id`, (req, res, next) => { authController_User.authMiddleware }, (req, res, next) => { userController.verifyIfExists, userController.update(req, res).catch(next) });
 
-userRoutes.post("/auth", (req, res, next) => { authController.authMiddleware });
+userRoutes.post("/auth", (req, res, next) => { authController_User.authMiddleware });
 
 export { routes }
